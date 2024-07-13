@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/5959fc12f2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <title>Mi Página con Bootstrap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    /* Jumbotron Styles */
+    .jumbotron {
+      background-image: linear-gradient(to bottom, #b3b0b0, #444);
+      color: #fff;
+      padding: 100px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    /* Container Styles */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    /* Game Container Styles */
+    .game-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Drag and Drop Styles */
+    .drag-zone {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .example-container {
+      width: 400px;
+      max-width: 100%;
+      margin: 0 25px 25px 0;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .example-list {
+      border: solid 1px #ccc;
+      min-height: 60px;
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      display: block;
+    }
+
+    .example-box {
+      padding: 20px 10px;
+      border-bottom: solid 1px #ccc;
+      color: rgba(0, 0, 0, 0.87);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      cursor: move;
+      background: white;
+      font-size: 14px;
+    }
+
+    @keyframes felicidades {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .confeti-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .confeti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: confeti 2s ease-in-out infinite;
+    }
+
+    @keyframes confeti {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-50%) scale(1.5);
+      }
+      100% {
+        transform: translateY(-100%) scale(1);
+      }
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #efefef;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <h1 class="display-4">Prueba técnica - Desarrollador Web</h1>
+  <p class="lead">Esta Web App fue desarrollada con Angular 17 y BootStrap 5.3 y Font Awesome.</p>
+  <hr class="my-4">
+  <p>Desarrollado por Juan Paulo Morales R.</p>
+  <p class="lead">
+    <a href="https://drive.google.com/file/d/17ppdKcdy66pQ6FflweuWs40rMP5xAJvt/view" class="btn btn-primary">Puntos a
+      considerar</a>
+  </p>
+</div>
+
+<div class="container">
+
+  <div cdkDropListGroup class="game-container">
+    <div class="example-container">
+      <h1>Completa el texto</h1>
+
+      <p class="text-to-complete">
+        La arquitectura multiprocesador es el
+      </p>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done1"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done1; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <p class="text-to-complete"> más
+        sencillo de los
+      </p>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done2"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done2; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done3"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done3; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <p class="text-to-complete">
+        , ya que es un
+      </p>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done4"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done4; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <p class="text-to-complete">
+        que ejecuta muchos
+      </p>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done5"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done5; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <p class="text-to-complete">
+        en procesadores diferentes. De esta forma las siguientes
+      </p>
+
+      <div class="example-container">
+        <div
+          cdkDropList
+          [cdkDropListData]="done6"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of done6; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+
+      <p class="text-to-complete">
+        serán asimiladas mejor.
+      </p>
+
+      <div  class="example-container">
+        <button class="btn btn-primary" (click)="checkIt()">Comprobar este código</button>
+      </div>
+
+      <div id="felicidades"></div>
+      <div id="sigueIntentando"></div>
+
+      <script src="index.ts"></script>
+
+      <div class="drag-zone">
+        <div
+          cdkDropList
+          [cdkDropListData]="todo"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of todo; track item) {
+            <div class="example-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted">jpmorales.developer&#64;gmail.com</p>
+    <p class="text-muted">+57 (320-901-76-04)</p>
+    <p class="text-muted">linkedin.com/in/juan-paulo-morales-rodr%C3%ADguez-7235492a8</p>
+  </div>
+</footer>
+<router-outlet></router-outlet>
+</body>
+</html>
+
+
